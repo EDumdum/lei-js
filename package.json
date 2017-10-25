@@ -1,6 +1,6 @@
 {
   "name": "fast-lei",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Validation and control key generation for Legal Entity Identifier",
   "main": "./src/lei.js",
   "types": "./src/lei.d.ts",
