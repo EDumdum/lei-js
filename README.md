@@ -1,6 +1,10 @@
-# luhn
+[![npm version](https://badge.fury.io/js/fast-lei.svg)](https://badge.fury.io/js/fast-lei)
+[![Build Status](https://travis-ci.org/EDumdum/lei-js.svg?branch=master)](https://travis-ci.org/EDumdum/lei-js)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/Edumdum/lei-js/master/LICENSE)
 
-Javascript tool to validate or generate control key for Legal Entity Identifier
+# LEI 
+
+Validation and control key generation for [Legal Entity Identifier (LEI)](https://en.wikipedia.org/wiki/Legal_Entity_Identifier).
 
 ## Usage
 
@@ -19,28 +23,33 @@ LEI.getMod97('724500884QS64MG71N'); // 76
 
 ## API
 
-### isValid
+### `isValid(value)` -> `Boolean`
 
-Check input value, must be not null, not undefined and of type string.
+Check requirements.  
+Returns if the LEI check digits are valid.
 
-The stringified value must respect LEI format (/^[0-9A-Z]{18}[0-9]{2}$/).
+*Required*
+- Value must be not `Null`
+- Value must be of type `String`
+- Value must respect format `^[0-9A-Z]{20}$`
 
-Check the value againt modulo 97 and must be equals to 1.
+### `generate(value)` -> `String`
 
-Returns boolean.
+Check requirements.  
+Returns the LEI check digit appended to the value.
 
-### generate
+*Required*
+- Value must be not `Null`
+- Value must be of type `String`
+- Value must respect format `^[0-9A-Z]{18}$`
 
- Check input value, must be not null, not undefined and of type string.
+### `getMod97(value)` -> `Number`
 
-The stringified value must respect LEI forma0 without ending control digits (/^[0-9A-Z]{18}$/).
+Does **NOT** check requirements.  
+Returns the module 97 remainder.
 
-Returns input value with check digits appended at the end.
+**Note:** `getMod97(value) === 1` is equivalent to `isValid(value)`. You may want to use this method instead of `isValid` if you ensure argument requirements on your side.
 
-### getMod97
-
-Compute modulo 97 remainder.
-
-Fast entry: you must ensure that given rawValue is not null or empty and respect format /^[0-9A-Z]{1,}$/.
-
-Note: Remainder cannot be directly used as check digits. To generate check digits, please refer to method generate.
+*Required*
+- Value must be not `Null`
+- Value must be of type `String`

@@ -2,9 +2,13 @@
 
 var lei = {
     /**
-     * Check input value, must be not null, not undefined and of type string.
-     * The stringified value must respect LEI format (/^[0-9A-Z]{18}[0-9]{2}$/).
-     * Check the value againt modulo 97 and must be equals to 1.
+     * Check requirements.  
+     * Returns if the LEI check digits are valid.
+     *
+     * Requirements:
+     * - rawValue must be not `Null`
+     * - rawValue must be of type `String`
+     * - rawValue must respect format `^[0-9A-Z]{20}$`
      * 
      * @param {*} rawValue 
      */
@@ -19,9 +23,13 @@ var lei = {
     },
 
     /**
-     * Check input value, must be not null, not undefined and of type string.
-     * The stringified value must respect LEI forma0 without ending control digits (/^[0-9A-Z]{18}$/).
-     * Returns input value with check digits appended at the end.
+     * Check requirements.  
+     * Returns the LEI check digit appended to the value.
+     * 
+     * Requirements:
+     * - rawValue must be not `Null`
+     * - rawValue must be of type `String`
+     * - rawValue must respest format `^[0-9A-Z]{18}$`
      * 
      * @param {*} rawValue 
      */
@@ -36,12 +44,16 @@ var lei = {
     },
 
     /**
-     * Compute modulo 97 remainder.
+     * Does NOT check requirements.  
+     * Returns the module 97 remainder.
+     * Note: 
+     *   `getMod97(value) === 1` is equivalent to `isValid(value)`. 
+     *   You may want to use this method instead of `isValid` if you ensure argument 
+     *   requirements on your side.
      * 
-     * Fast entry: you must ensure that given rawValue is not null or empty and
-     * respect format /^[0-9A-Z]{1,}$/
-     * 
-     * Note: Remainder cannot be directly used as check digits. To generate check digits, please refer to method generate.
+     * Requirements
+     * - rawValue must be not `Null`
+     * - rawValue must be of type `String`
      * 
      * @param {*} rawValue 
      */
