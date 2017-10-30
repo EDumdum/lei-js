@@ -17,8 +17,6 @@ LEI.isValid('969500T3MBS4SQAMHJ45'); // false
 LEI.isValid('724500VKKSH9QOLTFR81'); // true
 
 LEI.generate('969500KSV493XWY0PS'); // 969500KSV493XWY0PS33
-
-LEI.getMod97('724500884QS64MG71N'); // 76
 ```
 
 ## API
@@ -42,14 +40,3 @@ Returns the LEI check digit appended to the value.
 - Value must be not `Null`
 - Value must be of type `String`
 - Value must respect format `^[0-9A-Z]{18}$`
-
-### `getMod97(value)` -> `Number`
-
-Does **NOT** check requirements.  
-Returns the module 97 remainder.
-
-**Note:** `getMod97(value) === 1` is equivalent to `isValid(value)`. You may want to use this method instead of `isValid` if you ensure argument requirements on your side.
-
-*Required*
-- Value must be not `Null`
-- Value must be of type `String`
