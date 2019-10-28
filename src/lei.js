@@ -14,7 +14,7 @@ var lei = {
      * 
      * @param {*} rawValue 
      */
-    isValid(rawValue) {
+    isValid: function(rawValue) {
         var value = stringifyInput(rawValue);
 
         if (!value.match(FORMAT_ISVALID)) {
@@ -35,7 +35,7 @@ var lei = {
      * 
      * @param {*} rawValue 
      */
-    generate(rawValue) {
+    generate: function(rawValue) {
         var value = stringifyInput(rawValue);
 
         if (!value.match(FORMAT_GENERATE)) {
